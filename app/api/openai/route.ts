@@ -29,6 +29,10 @@ export async function POST(request: NextRequest) {
       size: '1024x1024',
     });
 
+    if (!response.data || response.data.length === 0) {
+      throw new Error('이미지 생성 실패: 응답 데이터가 없습니다.');
+    }
+
     return NextResponse.json({
       imageUrl: response.data[0].url,
       revisedPrompt: response.data[0].revised_prompt,
