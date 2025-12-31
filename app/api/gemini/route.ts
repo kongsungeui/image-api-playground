@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
 
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     const { prompt } = await request.json();
