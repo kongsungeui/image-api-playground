@@ -1,0 +1,56 @@
+{
+  "name": "Image API Playground",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  
+  // 컨테이너 내부에서 사용할 기능들
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+
+  // 포트 포워딩 설정
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // 컨테이너 생성 후 실행할 명령어
+  "postCreateCommand": "npm install",
+
+  // VS Code 설정
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-typescript-next",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "ms-azuretools.vscode-docker",
+        "anthropic.claude-code",
+        "openai.openai-codex",
+        "google.gemini-code-assist"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true
+      }
+    }
+  },
+
+  // 환경 변수 파일 연결 (있을 경우)
+  "runArgs": ["--env-file", ".env.local"],
+
+  // 원격 사용자 설정
+  "remoteUser": "node"
+}
