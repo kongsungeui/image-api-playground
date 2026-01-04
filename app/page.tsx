@@ -165,7 +165,7 @@ export default function Home() {
         </div>
 
         <div className="result-card">
-          <h2>Gemini</h2>
+          <h2>Gemini 2.5</h2>
           {geminiResult.loading && <div className="loading">생성 중...</div>}
           {geminiResult.error && <div className="error">{geminiResult.error}</div>}
           {geminiResult.imageUrl && (
